@@ -83,7 +83,7 @@ class Jogadores{
 	public void setTimes(int[] times) { this.times = times; }
 
 	public void imprimir(){
-		System.out.println(id + " " + nome + " " + nascimento + " " + foto +  " " + timesToString());
+		System.out.println(id + " " + nome + " " + nascimento.toString() + " " + foto +  " " + timesToString());
 	}
 
 	public int[] strToIntArray(String line, int intLen){
