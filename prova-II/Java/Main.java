@@ -45,6 +45,10 @@ class Date{
 	public void setDia(int dia){ this.dia = dia; }
 	public void setMes(int mes){ this.mes = mes; }
 	public void setAno(int ano){ this.ano = ano; }
+
+	public String toString(){
+		return new String(dia + "/" + mes + "/" + ano);
+	}
 }
 
 class Jogadores{
@@ -93,8 +97,10 @@ class Jogadores{
 				sb.append(line.charAt(i));
 			}else if(line.charAt(i) == ','){
 				tmp[index++] = Integer.parseInt(sb.toString()); 
+				sb = new StringBuilder();
 			}
 		}
+		tmp[index] = Integer.parseInt(sb.toString());
 
 		return tmp;
 	}
@@ -120,7 +126,6 @@ class Jogadores{
 	public void ler(String line){
 		int len = line.length();
 		StringBuilder sb = new StringBuilder();
-		System.out.println(0);
 
 		int virgulas = 0;
 		for(int i = 0; i < len; i++){
@@ -137,7 +142,6 @@ class Jogadores{
 				sb = new StringBuilder();
 				virgulas++;
 				i++;
-				System.out.println(i);
 			}
 			if(virgulas == 2){
 				while(line.charAt(i) != ','){
@@ -147,7 +151,6 @@ class Jogadores{
 				sb = new StringBuilder();
 				virgulas++;
 				i++;
-				System.out.println(i);
 			}
 			if(virgulas == 3){
 				while(line.charAt(i) != ','){
@@ -157,7 +160,6 @@ class Jogadores{
 				sb = new StringBuilder();
 				virgulas++;
 				i++;
-				System.out.println(i);
 			}
 			if(virgulas == 5){
 				while(line.charAt(i) != ','){
@@ -166,12 +168,11 @@ class Jogadores{
 				this.id = Integer.parseInt(sb.toString());
 				sb = new StringBuilder();
 				virgulas++;
-				i++;
-				System.out.println(i);
+				i+=2;
 			}
-			if(virgulas == 6){
+			if(i < len && virgulas == 6){
 				int index = 0;
-				while(line.charAt(i) != ']'){
+				while(i < len && line.charAt(i) != '"'){
 					if((line.charAt(i) >= '0' &&  line.charAt(i) <= '9') || line.charAt(i) == ','){
 						sb.append(line.charAt(i));
 						if(line.charAt(i) == ',')
@@ -180,7 +181,6 @@ class Jogadores{
 					i++;
 				}
 				this.times = strToIntArray(sb.toString(),index + 1);
-				System.out.println(i);
 			}
 		}
 	}
