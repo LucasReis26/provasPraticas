@@ -47,7 +47,7 @@ class Date{
 	public void setAno(int ano){ this.ano = ano; }
 
 	public String toString(){
-		return new String(dia + "/" + mes + "/" + ano);
+		return String.format("%d/%02d/%04d",dia,mes,ano);
 	}
 }
 
